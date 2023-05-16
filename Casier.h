@@ -1,8 +1,10 @@
 #pragma once
 
+using namespace System;
+using namespace System::Collections::Generic;
+
 #include <string>
 #include <map>
-#include <cliext/map>
 
 
 ref class Casier
@@ -11,27 +13,21 @@ public :
 	enum class TypeDeVin { Rouge, Rose, Blanc };
 
 private :
-	std::string nomDuDomaine;
+	String^ nomDuDomaine;
 	TypeDeVin typeDeVin;
 	int annee;
 	int nbBouteilles;
 	int prixParBouteille;
 
-	std::map<TypeDeVin, std::string> nomTypeDeVin = {
-		{TypeDeVin::Blanc, "Blanc"},
-		{TypeDeVin::Rouge, "Rouge"},
-		{TypeDeVin::Rose, "Rose"}
-	};
+	Dictionary<TypeDeVin, String^>^ nomTypeDeVin;
 
 public : 
 	Casier();
-	/*
-	* std::string nomDuDomaine, TypeDeVin typeDeVin, int annee, int nbBouteilles, int prixParBouteille
-	*/
-	Casier(std::string nomDuDomaine, TypeDeVin typeDeVin, int annee, int nbBouteilles, int prixParBouteille);
 
-	void FixerNomDuDomaine(std::string nomDuDomaine);
-	std::string recupNomDuDomaine();
+	Casier(String^ nomDuDomaine, TypeDeVin typeDeVin, int annee, int nbBouteilles, int prixParBouteille);
+
+	void FixerNomDuDomaine(String^ nomDuDomaine);
+	String^ recupNomDuDomaine();
 
 	void FixerTypeDeVin(TypeDeVin typeDeVin);
 	TypeDeVin recupTypeDeVin();
@@ -45,6 +41,6 @@ public :
 	void FixerPrixParBouteille(int prixParBouteille);
 	int recupPrixParBouteille();
 
-	std::string ConsulterInformations();
+	String^ ConsulterInformations();
 };
 

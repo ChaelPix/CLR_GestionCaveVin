@@ -37,22 +37,34 @@ namespace CLR_GestionCaveVin {
 			}
 		}
 	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::ComboBox^ Box_Region;
 	protected:
-	private: System::Windows::Forms::ComboBox^ comboBox1;
+
 	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::TextBox^ textBox2;
-	private: System::Windows::Forms::TextBox^ textBox3;
-	private: System::Windows::Forms::TextBox^ textBox4;
-	private: System::Windows::Forms::TextBox^ textBox5;
-	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::TextBox^ txtb_Domaine;
+	private: System::Windows::Forms::TextBox^ txtb_Type;
+	private: System::Windows::Forms::TextBox^ txtb_Annee;
+	private: System::Windows::Forms::TextBox^ txtb_Prix;
+	private: System::Windows::Forms::TextBox^ txtb_nbBouteilles;
+	private: System::Windows::Forms::Label^ txt_nbBouteilles;
+
+
+
+
+
+
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::Button^ button3;
-	private: System::Windows::Forms::Button^ button4;
-	private: System::Windows::Forms::Button^ button5;
-	private: System::Windows::Forms::Button^ button6;
-	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::Button^ btn_Ajouter;
+	private: System::Windows::Forms::Button^ btn_Supprimer;
+
+
+	private: System::Windows::Forms::Button^ btn_CasierPrecedent;
+
+	private: System::Windows::Forms::Button^ btn_CasierSuivant;
+
+	private: System::Windows::Forms::Label^ txt_Casier;
+
 
 	private:
 		/// <summary>
@@ -68,21 +80,21 @@ namespace CLR_GestionCaveVin {
 		void InitializeComponent(void)
 		{
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			this->Box_Region = (gcnew System::Windows::Forms::ComboBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
-			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->txtb_Domaine = (gcnew System::Windows::Forms::TextBox());
+			this->txtb_Type = (gcnew System::Windows::Forms::TextBox());
+			this->txtb_Annee = (gcnew System::Windows::Forms::TextBox());
+			this->txtb_Prix = (gcnew System::Windows::Forms::TextBox());
+			this->txtb_nbBouteilles = (gcnew System::Windows::Forms::TextBox());
+			this->txt_nbBouteilles = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->button5 = (gcnew System::Windows::Forms::Button());
-			this->button6 = (gcnew System::Windows::Forms::Button());
-			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->btn_Ajouter = (gcnew System::Windows::Forms::Button());
+			this->btn_Supprimer = (gcnew System::Windows::Forms::Button());
+			this->btn_CasierPrecedent = (gcnew System::Windows::Forms::Button());
+			this->btn_CasierSuivant = (gcnew System::Windows::Forms::Button());
+			this->txt_Casier = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -95,16 +107,16 @@ namespace CLR_GestionCaveVin {
 			this->label1->Text = L"Ma Cave à Vin";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
-			// comboBox1
+			// Box_Region
 			// 
-			this->comboBox1->Font = (gcnew System::Drawing::Font(L"Reem Kufi", 14.25F));
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Alsace", L"Bordeaux", L"Bourgogne", L"Rhône" });
-			this->comboBox1->Location = System::Drawing::Point(143, 94);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(176, 44);
-			this->comboBox1->TabIndex = 1;
-			this->comboBox1->Text = L"Alsace";
+			this->Box_Region->Font = (gcnew System::Drawing::Font(L"Reem Kufi", 14.25F));
+			this->Box_Region->FormattingEnabled = true;
+			this->Box_Region->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Alsace", L"Bordeaux", L"Bourgogne", L"Rhône" });
+			this->Box_Region->Location = System::Drawing::Point(143, 94);
+			this->Box_Region->Name = L"Box_Region";
+			this->Box_Region->Size = System::Drawing::Size(176, 44);
+			this->Box_Region->TabIndex = 1;
+			this->Box_Region->Text = L"Alsace";
 			// 
 			// label2
 			// 
@@ -116,70 +128,70 @@ namespace CLR_GestionCaveVin {
 			this->label2->Text = L"Région :";
 			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
-			// textBox1
+			// txtb_Domaine
 			// 
-			this->textBox1->Font = (gcnew System::Drawing::Font(L"SimSun-ExtB", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->txtb_Domaine->Font = (gcnew System::Drawing::Font(L"SimSun-ExtB", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox1->Location = System::Drawing::Point(358, 312);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(179, 23);
-			this->textBox1->TabIndex = 3;
-			this->textBox1->Text = L"Domaine";
-			this->textBox1->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->txtb_Domaine->Location = System::Drawing::Point(358, 312);
+			this->txtb_Domaine->Name = L"txtb_Domaine";
+			this->txtb_Domaine->Size = System::Drawing::Size(179, 23);
+			this->txtb_Domaine->TabIndex = 3;
+			this->txtb_Domaine->Text = L"Domaine";
+			this->txtb_Domaine->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
-			// textBox2
+			// txtb_Type
 			// 
-			this->textBox2->Font = (gcnew System::Drawing::Font(L"SimSun-ExtB", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->txtb_Type->Font = (gcnew System::Drawing::Font(L"SimSun-ExtB", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox2->Location = System::Drawing::Point(358, 344);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(179, 23);
-			this->textBox2->TabIndex = 4;
-			this->textBox2->Text = L"Rouge/Blanc/Rose";
-			this->textBox2->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->txtb_Type->Location = System::Drawing::Point(358, 344);
+			this->txtb_Type->Name = L"txtb_Type";
+			this->txtb_Type->Size = System::Drawing::Size(179, 23);
+			this->txtb_Type->TabIndex = 4;
+			this->txtb_Type->Text = L"Rouge/Blanc/Rose";
+			this->txtb_Type->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
-			// textBox3
+			// txtb_Annee
 			// 
-			this->textBox3->Font = (gcnew System::Drawing::Font(L"SimSun-ExtB", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->txtb_Annee->Font = (gcnew System::Drawing::Font(L"SimSun-ExtB", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox3->Location = System::Drawing::Point(358, 376);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(179, 23);
-			this->textBox3->TabIndex = 5;
-			this->textBox3->Text = L"Annee";
-			this->textBox3->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->txtb_Annee->Location = System::Drawing::Point(358, 376);
+			this->txtb_Annee->Name = L"txtb_Annee";
+			this->txtb_Annee->Size = System::Drawing::Size(179, 23);
+			this->txtb_Annee->TabIndex = 5;
+			this->txtb_Annee->Text = L"Annee";
+			this->txtb_Annee->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
-			// textBox4
+			// txtb_Prix
 			// 
-			this->textBox4->Font = (gcnew System::Drawing::Font(L"SimSun-ExtB", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->txtb_Prix->Font = (gcnew System::Drawing::Font(L"SimSun-ExtB", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox4->Location = System::Drawing::Point(358, 408);
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(179, 23);
-			this->textBox4->TabIndex = 6;
-			this->textBox4->Text = L"Prix/bouteille";
-			this->textBox4->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->txtb_Prix->Location = System::Drawing::Point(358, 408);
+			this->txtb_Prix->Name = L"txtb_Prix";
+			this->txtb_Prix->Size = System::Drawing::Size(179, 23);
+			this->txtb_Prix->TabIndex = 6;
+			this->txtb_Prix->Text = L"Prix/bouteille";
+			this->txtb_Prix->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
-			// textBox5
+			// txtb_nbBouteilles
 			// 
-			this->textBox5->Font = (gcnew System::Drawing::Font(L"SimSun-ExtB", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->txtb_nbBouteilles->Font = (gcnew System::Drawing::Font(L"SimSun-ExtB", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox5->Location = System::Drawing::Point(358, 440);
-			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(179, 23);
-			this->textBox5->TabIndex = 7;
-			this->textBox5->Text = L"xBouteilles";
-			this->textBox5->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->txtb_nbBouteilles->Location = System::Drawing::Point(358, 440);
+			this->txtb_nbBouteilles->Name = L"txtb_nbBouteilles";
+			this->txtb_nbBouteilles->Size = System::Drawing::Size(179, 23);
+			this->txtb_nbBouteilles->TabIndex = 7;
+			this->txtb_nbBouteilles->Text = L"xBouteilles";
+			this->txtb_nbBouteilles->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
-			// label3
+			// txt_nbBouteilles
 			// 
-			this->label3->Font = (gcnew System::Drawing::Font(L"Reem Kufi", 18));
-			this->label3->Location = System::Drawing::Point(644, 88);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(228, 50);
-			this->label3->TabIndex = 8;
-			this->label3->Text = L"Nb Bouteilles : 0";
-			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->txt_nbBouteilles->Font = (gcnew System::Drawing::Font(L"Reem Kufi", 18));
+			this->txt_nbBouteilles->Location = System::Drawing::Point(644, 88);
+			this->txt_nbBouteilles->Name = L"txt_nbBouteilles";
+			this->txt_nbBouteilles->Size = System::Drawing::Size(228, 50);
+			this->txt_nbBouteilles->TabIndex = 8;
+			this->txt_nbBouteilles->Text = L"Nb Bouteilles : 0";
+			this->txt_nbBouteilles->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// button1
 			// 
@@ -201,76 +213,76 @@ namespace CLR_GestionCaveVin {
 			this->button2->Text = L"Consulter";
 			this->button2->UseVisualStyleBackColor = true;
 			// 
-			// button3
+			// btn_Ajouter
 			// 
-			this->button3->Font = (gcnew System::Drawing::Font(L"Reem Kufi", 11.25F));
-			this->button3->Location = System::Drawing::Point(334, 488);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(118, 45);
-			this->button3->TabIndex = 11;
-			this->button3->Text = L"Ajouter";
-			this->button3->UseVisualStyleBackColor = true;
+			this->btn_Ajouter->Font = (gcnew System::Drawing::Font(L"Reem Kufi", 11.25F));
+			this->btn_Ajouter->Location = System::Drawing::Point(322, 488);
+			this->btn_Ajouter->Name = L"btn_Ajouter";
+			this->btn_Ajouter->Size = System::Drawing::Size(118, 45);
+			this->btn_Ajouter->TabIndex = 11;
+			this->btn_Ajouter->Text = L"Ajouter";
+			this->btn_Ajouter->UseVisualStyleBackColor = true;
 			// 
-			// button4
+			// btn_Supprimer
 			// 
-			this->button4->Font = (gcnew System::Drawing::Font(L"Reem Kufi", 11.25F));
-			this->button4->Location = System::Drawing::Point(458, 488);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(118, 45);
-			this->button4->TabIndex = 12;
-			this->button4->Text = L"Supprimer";
-			this->button4->UseVisualStyleBackColor = true;
+			this->btn_Supprimer->Font = (gcnew System::Drawing::Font(L"Reem Kufi", 11.25F));
+			this->btn_Supprimer->Location = System::Drawing::Point(458, 488);
+			this->btn_Supprimer->Name = L"btn_Supprimer";
+			this->btn_Supprimer->Size = System::Drawing::Size(118, 45);
+			this->btn_Supprimer->TabIndex = 12;
+			this->btn_Supprimer->Text = L"Supprimer";
+			this->btn_Supprimer->UseVisualStyleBackColor = true;
 			// 
-			// button5
+			// btn_CasierPrecedent
 			// 
-			this->button5->Font = (gcnew System::Drawing::Font(L"Reem Kufi", 11.25F));
-			this->button5->Location = System::Drawing::Point(286, 344);
-			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(36, 45);
-			this->button5->TabIndex = 13;
-			this->button5->Text = L"<";
-			this->button5->UseVisualStyleBackColor = true;
+			this->btn_CasierPrecedent->Font = (gcnew System::Drawing::Font(L"Reem Kufi", 11.25F));
+			this->btn_CasierPrecedent->Location = System::Drawing::Point(286, 344);
+			this->btn_CasierPrecedent->Name = L"btn_CasierPrecedent";
+			this->btn_CasierPrecedent->Size = System::Drawing::Size(36, 45);
+			this->btn_CasierPrecedent->TabIndex = 13;
+			this->btn_CasierPrecedent->Text = L"<";
+			this->btn_CasierPrecedent->UseVisualStyleBackColor = true;
 			// 
-			// button6
+			// btn_CasierSuivant
 			// 
-			this->button6->Font = (gcnew System::Drawing::Font(L"Reem Kufi", 11.25F));
-			this->button6->Location = System::Drawing::Point(552, 344);
-			this->button6->Name = L"button6";
-			this->button6->Size = System::Drawing::Size(37, 45);
-			this->button6->TabIndex = 14;
-			this->button6->Text = L">";
-			this->button6->UseVisualStyleBackColor = true;
+			this->btn_CasierSuivant->Font = (gcnew System::Drawing::Font(L"Reem Kufi", 11.25F));
+			this->btn_CasierSuivant->Location = System::Drawing::Point(562, 344);
+			this->btn_CasierSuivant->Name = L"btn_CasierSuivant";
+			this->btn_CasierSuivant->Size = System::Drawing::Size(37, 45);
+			this->btn_CasierSuivant->TabIndex = 14;
+			this->btn_CasierSuivant->Text = L">";
+			this->btn_CasierSuivant->UseVisualStyleBackColor = true;
 			// 
-			// label4
+			// txt_Casier
 			// 
-			this->label4->Font = (gcnew System::Drawing::Font(L"Reem Kufi", 18));
-			this->label4->Location = System::Drawing::Point(347, 248);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(228, 50);
-			this->label4->TabIndex = 15;
-			this->label4->Text = L"Casier #X/Y";
-			this->label4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->txt_Casier->Font = (gcnew System::Drawing::Font(L"Reem Kufi", 18));
+			this->txt_Casier->Location = System::Drawing::Point(334, 248);
+			this->txt_Casier->Name = L"txt_Casier";
+			this->txt_Casier->Size = System::Drawing::Size(241, 50);
+			this->txt_Casier->TabIndex = 15;
+			this->txt_Casier->Text = L"Casier #X/Y";
+			this->txt_Casier->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(884, 611);
-			this->Controls->Add(this->label4);
-			this->Controls->Add(this->button6);
-			this->Controls->Add(this->button5);
-			this->Controls->Add(this->button4);
-			this->Controls->Add(this->button3);
+			this->Controls->Add(this->txt_Casier);
+			this->Controls->Add(this->btn_CasierSuivant);
+			this->Controls->Add(this->btn_CasierPrecedent);
+			this->Controls->Add(this->btn_Supprimer);
+			this->Controls->Add(this->btn_Ajouter);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
-			this->Controls->Add(this->label3);
-			this->Controls->Add(this->textBox5);
-			this->Controls->Add(this->textBox4);
-			this->Controls->Add(this->textBox3);
-			this->Controls->Add(this->textBox2);
-			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->txt_nbBouteilles);
+			this->Controls->Add(this->txtb_nbBouteilles);
+			this->Controls->Add(this->txtb_Prix);
+			this->Controls->Add(this->txtb_Annee);
+			this->Controls->Add(this->txtb_Type);
+			this->Controls->Add(this->txtb_Domaine);
 			this->Controls->Add(this->label2);
-			this->Controls->Add(this->comboBox1);
+			this->Controls->Add(this->Box_Region);
 			this->Controls->Add(this->label1);
 			this->Name = L"Form1";
 			this->Text = L"Gestion Cave";
@@ -280,6 +292,8 @@ namespace CLR_GestionCaveVin {
 		}
 
 #pragma endregion
+
+		Cave cave;
 
 
 

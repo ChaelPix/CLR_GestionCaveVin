@@ -3,16 +3,21 @@
 
 Casier::Casier() 
 	: nomDuDomaine("Sans Domaine"), typeDeVin(Casier::TypeDeVin::Rouge), annee(2000), nbBouteilles(0), prixParBouteille(150)
-{ }
+{
+	nomTypeDeVin = gcnew Dictionary<TypeDeVin, String^>();
+	nomTypeDeVin->Add(TypeDeVin::Blanc, "Blanc");
+	nomTypeDeVin->Add(TypeDeVin::Rouge, "Rouge");
+	nomTypeDeVin->Add(TypeDeVin::Rose, "Rose");
+}
 
-Casier::Casier(std::string nomDuDomaine, TypeDeVin typdeDeVin, int annee, int nbBouteilles, int prixParBouteille)
+Casier::Casier(String^ nomDuDomaine, TypeDeVin typdeDeVin, int annee, int nbBouteilles, int prixParBouteille)
 	: nomDuDomaine(nomDuDomaine), typeDeVin(typdeDeVin), annee(annee), nbBouteilles(nbBouteilles), prixParBouteille(prixParBouteille)
 { }
 
-void Casier::FixerNomDuDomaine(std::string nomDuDomaine) {
+void Casier::FixerNomDuDomaine(String^ nomDuDomaine) {
 	this->nomDuDomaine = nomDuDomaine;
 }
-std::string Casier::recupNomDuDomaine() {
+String^ Casier::recupNomDuDomaine() {
 	return nomDuDomaine;
 }
 
@@ -44,17 +49,17 @@ int Casier::recupPrixParBouteille() {
 	return prixParBouteille;
 }
 
-std::string Casier::ConsulterInformations() {
-	std::string information = 
+String^ Casier::ConsulterInformations() {
+	String^ information = 
 		nomDuDomaine 
 		+ " propose du vin " 
 		+ nomTypeDeVin[typeDeVin] 
 		+ " de l'an " 
-		+ std::to_string(annee) 
+		+ Convert::ToString(annee)
 		+ ". Il y a " 
-		+ std::to_string(nbBouteilles)
+		+ Convert::ToString(nbBouteilles)
 		+ " coutant chacune " 
-		+ std::to_string(prixParBouteille)
+		+ Convert::ToString(prixParBouteille)
 		+ " euros \n";
 
 	return information;
