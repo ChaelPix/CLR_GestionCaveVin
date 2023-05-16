@@ -64,6 +64,8 @@ namespace CLR_GestionCaveVin {
 	private: System::Windows::Forms::Button^ btn_CasierSuivant;
 
 	private: System::Windows::Forms::Label^ txt_Casier;
+	private: System::Windows::Forms::Button^ btn_Sauvegarder;
+	private: System::Windows::Forms::Button^ btn_Charger;
 
 
 	private:
@@ -95,6 +97,8 @@ namespace CLR_GestionCaveVin {
 			this->btn_CasierPrecedent = (gcnew System::Windows::Forms::Button());
 			this->btn_CasierSuivant = (gcnew System::Windows::Forms::Button());
 			this->txt_Casier = (gcnew System::Windows::Forms::Label());
+			this->btn_Sauvegarder = (gcnew System::Windows::Forms::Button());
+			this->btn_Charger = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -117,6 +121,7 @@ namespace CLR_GestionCaveVin {
 			this->Box_Region->Size = System::Drawing::Size(176, 44);
 			this->Box_Region->TabIndex = 1;
 			this->Box_Region->Text = L"Alsace";
+			this->Box_Region->SelectedIndexChanged += gcnew System::EventHandler(this, &Form1::Box_Region_SelectedIndexChanged);
 			// 
 			// label2
 			// 
@@ -263,11 +268,33 @@ namespace CLR_GestionCaveVin {
 			this->txt_Casier->Text = L"Casier #X/Y";
 			this->txt_Casier->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
+			// btn_Sauvegarder
+			// 
+			this->btn_Sauvegarder->Font = (gcnew System::Drawing::Font(L"Reem Kufi", 11.25F));
+			this->btn_Sauvegarder->Location = System::Drawing::Point(12, 527);
+			this->btn_Sauvegarder->Name = L"btn_Sauvegarder";
+			this->btn_Sauvegarder->Size = System::Drawing::Size(118, 33);
+			this->btn_Sauvegarder->TabIndex = 16;
+			this->btn_Sauvegarder->Text = L"Sauvegarder";
+			this->btn_Sauvegarder->UseVisualStyleBackColor = true;
+			// 
+			// btn_Charger
+			// 
+			this->btn_Charger->Font = (gcnew System::Drawing::Font(L"Reem Kufi", 11.25F));
+			this->btn_Charger->Location = System::Drawing::Point(12, 566);
+			this->btn_Charger->Name = L"btn_Charger";
+			this->btn_Charger->Size = System::Drawing::Size(118, 33);
+			this->btn_Charger->TabIndex = 17;
+			this->btn_Charger->Text = L"Charger";
+			this->btn_Charger->UseVisualStyleBackColor = true;
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(884, 611);
+			this->Controls->Add(this->btn_Charger);
+			this->Controls->Add(this->btn_Sauvegarder);
 			this->Controls->Add(this->txt_Casier);
 			this->Controls->Add(this->btn_CasierSuivant);
 			this->Controls->Add(this->btn_CasierPrecedent);
@@ -294,9 +321,18 @@ namespace CLR_GestionCaveVin {
 #pragma endregion
 
 		Cave cave;
+		int regionSelectionnee = 0;
 
+		void MajCasierTxt()
+		{
+			int x = cave.
+			txt_Casier->Text = "Nb Casiers : " + x;
+		}
 
+	private: System::Void Box_Region_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 
+		regionSelectionnee = Box_Region->SelectedIndex;
 
-	};
+	}
+};
 }

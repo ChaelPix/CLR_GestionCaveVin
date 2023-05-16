@@ -54,3 +54,13 @@ int Cave::recupTotalBouteilles()
 
     return nbTotalBouteilles;
 }
+
+int Cave::recupNbCasiersRegion()
+{
+    return regionsViticoles->Count;
+}
+
+Casier^ Cave::RecupInfoCasier()
+{
+    
+}

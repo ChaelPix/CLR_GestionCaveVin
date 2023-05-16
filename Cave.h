@@ -26,6 +26,9 @@ public:
 	void SupprimerCasierDansRegion(Region region, int idCasier);
 	String^ AfficherTousLesCasiersRegion(Region region);
 
+    int recupNbCasiersRegion();
+    Casier^ RecupInfoCasier();
+
 	int recupTotalBouteilles();
 	
 };
