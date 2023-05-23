@@ -23,6 +23,7 @@ namespace CLR_GestionCaveVin {
 			//
 			//TODO: Add the constructor code here
 			//
+			MajCasierTxt();
 		}
 
 	protected:
@@ -42,16 +43,11 @@ namespace CLR_GestionCaveVin {
 
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::TextBox^ txtb_Domaine;
-	private: System::Windows::Forms::TextBox^ txtb_Type;
+
 	private: System::Windows::Forms::TextBox^ txtb_Annee;
 	private: System::Windows::Forms::TextBox^ txtb_Prix;
 	private: System::Windows::Forms::TextBox^ txtb_nbBouteilles;
 	private: System::Windows::Forms::Label^ txt_nbBouteilles;
-
-
-
-
-
 
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
@@ -66,6 +62,10 @@ namespace CLR_GestionCaveVin {
 	private: System::Windows::Forms::Label^ txt_Casier;
 	private: System::Windows::Forms::Button^ btn_Sauvegarder;
 	private: System::Windows::Forms::Button^ btn_Charger;
+	private: System::Windows::Forms::ComboBox^ Box_TypeVin;
+	private: System::Windows::Forms::Label^ txt_Erreur;
+
+
 
 
 	private:
@@ -85,7 +85,6 @@ namespace CLR_GestionCaveVin {
 			this->Box_Region = (gcnew System::Windows::Forms::ComboBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->txtb_Domaine = (gcnew System::Windows::Forms::TextBox());
-			this->txtb_Type = (gcnew System::Windows::Forms::TextBox());
 			this->txtb_Annee = (gcnew System::Windows::Forms::TextBox());
 			this->txtb_Prix = (gcnew System::Windows::Forms::TextBox());
 			this->txtb_nbBouteilles = (gcnew System::Windows::Forms::TextBox());
@@ -99,6 +98,8 @@ namespace CLR_GestionCaveVin {
 			this->txt_Casier = (gcnew System::Windows::Forms::Label());
 			this->btn_Sauvegarder = (gcnew System::Windows::Forms::Button());
 			this->btn_Charger = (gcnew System::Windows::Forms::Button());
+			this->Box_TypeVin = (gcnew System::Windows::Forms::ComboBox());
+			this->txt_Erreur = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -143,17 +144,6 @@ namespace CLR_GestionCaveVin {
 			this->txtb_Domaine->TabIndex = 3;
 			this->txtb_Domaine->Text = L"Domaine";
 			this->txtb_Domaine->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			// 
-			// txtb_Type
-			// 
-			this->txtb_Type->Font = (gcnew System::Drawing::Font(L"SimSun-ExtB", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->txtb_Type->Location = System::Drawing::Point(358, 344);
-			this->txtb_Type->Name = L"txtb_Type";
-			this->txtb_Type->Size = System::Drawing::Size(179, 23);
-			this->txtb_Type->TabIndex = 4;
-			this->txtb_Type->Text = L"Rouge/Blanc/Rose";
-			this->txtb_Type->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
 			// txtb_Annee
 			// 
@@ -227,6 +217,7 @@ namespace CLR_GestionCaveVin {
 			this->btn_Ajouter->TabIndex = 11;
 			this->btn_Ajouter->Text = L"Ajouter";
 			this->btn_Ajouter->UseVisualStyleBackColor = true;
+			this->btn_Ajouter->Click += gcnew System::EventHandler(this, &Form1::btn_Ajouter_Click);
 			// 
 			// btn_Supprimer
 			// 
@@ -288,11 +279,38 @@ namespace CLR_GestionCaveVin {
 			this->btn_Charger->Text = L"Charger";
 			this->btn_Charger->UseVisualStyleBackColor = true;
 			// 
+			// Box_TypeVin
+			// 
+			this->Box_TypeVin->Cursor = System::Windows::Forms::Cursors::IBeam;
+			this->Box_TypeVin->Font = (gcnew System::Drawing::Font(L"SimSun-ExtB", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->Box_TypeVin->FormattingEnabled = true;
+			this->Box_TypeVin->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Rouge", L"Rose", L"Blanc" });
+			this->Box_TypeVin->Location = System::Drawing::Point(358, 344);
+			this->Box_TypeVin->Name = L"Box_TypeVin";
+			this->Box_TypeVin->RightToLeft = System::Windows::Forms::RightToLeft::No;
+			this->Box_TypeVin->Size = System::Drawing::Size(179, 24);
+			this->Box_TypeVin->TabIndex = 18;
+			this->Box_TypeVin->Text = L"Rouge";
+			// 
+			// txt_Erreur
+			// 
+			this->txt_Erreur->Font = (gcnew System::Drawing::Font(L"Javanese Text", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->txt_Erreur->ForeColor = System::Drawing::Color::Red;
+			this->txt_Erreur->Location = System::Drawing::Point(143, 549);
+			this->txt_Erreur->Name = L"txt_Erreur";
+			this->txt_Erreur->Size = System::Drawing::Size(729, 40);
+			this->txt_Erreur->TabIndex = 19;
+			this->txt_Erreur->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(884, 611);
+			this->Controls->Add(this->txt_Erreur);
+			this->Controls->Add(this->Box_TypeVin);
 			this->Controls->Add(this->btn_Charger);
 			this->Controls->Add(this->btn_Sauvegarder);
 			this->Controls->Add(this->txt_Casier);
@@ -306,7 +324,6 @@ namespace CLR_GestionCaveVin {
 			this->Controls->Add(this->txtb_nbBouteilles);
 			this->Controls->Add(this->txtb_Prix);
 			this->Controls->Add(this->txtb_Annee);
-			this->Controls->Add(this->txtb_Type);
 			this->Controls->Add(this->txtb_Domaine);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->Box_Region);
@@ -322,17 +339,50 @@ namespace CLR_GestionCaveVin {
 
 		Cave cave;
 		int regionSelectionnee = 0;
+		int casierSelectionne = 0;
 
 		void MajCasierTxt()
 		{
-			int x = cave.
-			txt_Casier->Text = "Nb Casiers : " + x;
+			int x = cave.recupNbCasiersRegion(regionSelectionnee);
+			txt_Casier->Text = "Casier #" + casierSelectionne + "/" + x;
+		}
+
+		int StringIntSecurise(String^ s, String^ nomErreur)
+		{
+			int x;
+			try
+			{
+				x = Convert::ToInt32(s);
+			}
+			catch (FormatException^)
+			{
+				txt_Erreur->Text = "ERREUR : " + nomErreur + " doit être un nombre";
+				x = -1;
+			}
+
+			return x;
 		}
 
 	private: System::Void Box_Region_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 
 		regionSelectionnee = Box_Region->SelectedIndex;
-
+		MajCasierTxt();
 	}
+
+private: System::Void btn_Ajouter_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ domaine = txtb_Domaine->Text;
+	Casier::TypeDeVin type = static_cast<Casier::TypeDeVin>(Box_TypeVin->SelectedIndex);
+
+	int annee = StringIntSecurise(txtb_Annee->Text, "L'année");
+	if (annee == -1) return;
+	int prix = StringIntSecurise(txtb_Prix->Text, "Le prix");
+	if (prix == -1) return;
+	int nbBouteilles = StringIntSecurise(txtb_nbBouteilles->Text, "Le nombre de bouteilles");
+	if (nbBouteilles == -1) return;
+
+	txt_Erreur->Text = "";
+	Casier^ casier = gcnew Casier(domaine, type, annee, nbBouteilles, prix);
+	/*cave.AjouterCasierDansRegion(static_cast<Cave::Region>regionSelectionnee, casier);*/
+}
 };
 }

@@ -12,7 +12,11 @@ Cave::Cave()
 
     nbTotalBouteilles = 0;
     for (int i = 0; i < 4; i++)
+    {
         regionsViticoles[i].region = static_cast<Region>(i);
+        regionsViticoles[i].casiers = gcnew List<Casier^>();
+    }
+ 
 }
 
 void Cave::AjouterCasierDansRegion(Cave::Region region, Casier^ casier)
@@ -55,12 +59,13 @@ int Cave::recupTotalBouteilles()
     return nbTotalBouteilles;
 }
 
-int Cave::recupNbCasiersRegion()
+int Cave::recupNbCasiersRegion(int region)
 {
-    return regionsViticoles->Count;
-}
+    int x = regionsViticoles[region].casiers->Count;
+    return x;
+}                
 
-Casier^ Cave::RecupInfoCasier()
+Casier^ Cave::RecupInfoCasier(int region, int casierId)
 {
-    
+    return regionsViticoles[region].casiers[casierId];
 }
